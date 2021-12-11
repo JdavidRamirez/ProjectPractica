@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+
 class PostController extends Controller
 {
-    /**
+    /*
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -24,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        return view('dashboard.post.create', ['post' => new Post()]);
     }
 
     /**
@@ -35,7 +37,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->validated());
+        return back()->with('status', 'Publicación generada con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('dashboard.post.show', ['post'=> $post]);
     }
 
     /**
@@ -57,7 +60,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('dashboard.post.edit', ['post'=> $post]);
     }
 
     /**
@@ -69,7 +72,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request-> validated());
+        return back()-> with('status','Publicación actualizada con éxito');
     }
 
     /**
@@ -82,4 +86,9 @@ class PostController extends Controller
     {
         //
     }
+
+    
+   
+
+
 }
