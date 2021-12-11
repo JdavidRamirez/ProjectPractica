@@ -1,11 +1,11 @@
+
 @csrf
 @include('dashboard.structure.validation-error')
 <div class="form-group ">
     {{-- input:text --}}
 
-    <label for="publication" class="col-md-4 col-form-label text-md-right">{{ __('Publicación') }}</label>
     <div class="col-md-6">
-         <input id="publication" type="text-Area" class="form-control @error('publication') is-invalid @enderror" 
+         <input id="publication" type="text" class="form-control" 
          name="publication" paceholder="Nombre publicación" value="{{ old('publication') }}" required autocomplete="publication" autofocus>
          @error('name')
              <span class="invalid-feedback" role="alert">
@@ -15,7 +15,7 @@
     </div>
     <br>
     <div class="form-group col-md-6">
-        <select class="form-control" name="state-publication" id="state-publication">
+        <select class="form-control" name="state_publication" id="state_publication">
             <option value="">Publicado</option>
             <option value="">No publicado</option>
             <option value="">En revisión</option>
@@ -24,9 +24,9 @@
     <br>
 
     <div class="form-group col-md-6">
-        <textarea class="form-control" name="content_publication" id="content_publication" placeholder="Contenido de la publicación">
-        {{ old('content_publication') }}
-</textarea>
+        <textarea class="form-control" name="content_publication" id="content_publication" placeholder="Contenido de la publicación" value="{{ old('content_publication') }}">
+        
+        </textarea>
     </div>
 </div>
 <br>

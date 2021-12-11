@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Post;
+use Illuminate\Http\PostRequest;
 use Illuminate\Http\Request;
 
 
@@ -37,7 +38,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->validated());
+        Post::create($request-> validate());
         return back()->with('status', 'Publicación generada con exito');
     }
 
@@ -72,7 +73,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update($request-> validated());
+        $post->update($request-> validate());
         return back()-> with('status','Publicación actualizada con éxito');
     }
 
@@ -84,8 +85,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post-> delete();
+        return back()->with('status', 'publicación eliminda con éxito');
     }
+
+        //
+    
 
     
    
